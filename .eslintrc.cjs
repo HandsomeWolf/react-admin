@@ -16,5 +16,6 @@ module.exports = {
     ],
     'no-console':'error',
     'no-debugger':'error',
+    "@typescript-eslint/no-explicit-any": "off"
   },
 }
