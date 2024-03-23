@@ -1,12 +1,15 @@
+import { App as AntdApp } from 'antd'
 import './App.css'
-import { HashRouter } from 'react-router-dom'
 import Router from './router'
+import AntdGlobal from '@/utils/AntdGlobal.tsx'
+import { RouterProvider } from 'react-router-dom'
 
 function App() {
   return (
-    <HashRouter>
-      <Router />
-    </HashRouter>
+    <AntdApp>
+      <AntdGlobal />
+      <RouterProvider router={Router} />
+    </AntdApp>
   )
 }
 
