@@ -1,16 +1,35 @@
-import { useEffect } from 'react'
-import { getPosts } from '@/api/test.ts'
+import { Button } from 'antd'
+import { useUserStore } from '@/store'
 
 export const Welcome = () => {
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await getPosts()
-      console.log(response)
-    }
+  const token = useUserStore(state => state.token)
+  const updateToken = useUserStore(state => state.updateToken)
+  const userInfo = useUserStore(state => state.userInfo)
+  const updateUsername = useUserStore(state => state.updateUserName)
 
-    // Immediately invoke the async function
-    fetchPosts()
-  }, [])
+  function getTokenClick() {
+    console.log(token)
+  }
 
-  return <div></div>
+  function updateTokenClick() {
+    updateToken('辰火流光')
+  }
+
+  function getUserInfoClick() {
+    console.log(userInfo)
+  }
+
+  function updateUsernameClick() {
+    updateUsername('辰火流光')
+  }
+
+  return (
+    <div>
+      <Button onClick={updateTokenClick}>更新Token</Button>
+      <Button onClick={getTokenClick}>获取Token</Button>
+
+      <Button onClick={updateUsernameClick}>设置Username</Button>
+      <Button onClick={getUserInfoClick}>获取UserInfo</Button>
+    </div>
+  )
 }
